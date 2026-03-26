@@ -14,15 +14,27 @@ export default function UserDropdown() {
     setIsOpen(false)
   }
 
+  const avatarUrl = user.profile_image
+    ? `http://localhost/minisocialnetworkingapp/backend/public${user.profile_image}`
+    : null
+
   return (
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="btn btn-ghost px-3 py-1.5"
       >
-        <span className="h-6 w-6 rounded-full bg-slate-300 flex items-center justify-center text-xs font-semibold text-slate-700">
-          {user.username.charAt(0).toUpperCase()}
-        </span>
+        {avatarUrl ? (
+          <img
+            src={avatarUrl}
+            alt={`${user.username} avatar`}
+            className="h-6 w-6 rounded-full object-cover border border-slate-200"
+          />
+        ) : (
+          <span className="h-6 w-6 rounded-full bg-slate-300 flex items-center justify-center text-xs font-semibold text-slate-700">
+            {user.username.charAt(0).toUpperCase()}
+          </span>
+        )}
         <span>{user.username}</span>
         <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

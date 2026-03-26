@@ -4,6 +4,7 @@ import { useAuth } from '../lib/useAuth'
 import UserDropdown from './UserDropdown'
 import SearchResults from './SearchResults'
 import { IconSearch } from './Icons'
+import logo from '../assets/socialnet-logo.png'
 
 export default function NavBar() {
   const { user } = useAuth()
@@ -20,8 +21,8 @@ export default function NavBar() {
   return (
     <div className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/70 backdrop-blur">
       <div className="mx-auto flex w-full max-w-3xl items-center justify-between gap-3 px-4 py-3">
-        <Link to="/" className="text-lg font-bold tracking-tight text-slate-900">
-          SocialNet
+        <Link to="/" className="inline-flex items-center">
+          <img src={logo} alt="SocialNet" className="h-10 w-auto" />
         </Link>
 
         {user && (
