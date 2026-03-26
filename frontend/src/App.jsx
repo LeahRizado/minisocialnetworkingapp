@@ -5,7 +5,6 @@ import LoginPage from './pages/Login'
 import RegisterPage from './pages/Register'
 import FeedPage from './pages/Feed'
 import ProfilePage from './pages/Profile'
-import SearchPage from './pages/Search'
 
 function RequireAuth({ children }) {
   const { user } = useAuth()
@@ -18,9 +17,9 @@ function RequireAuth({ children }) {
 
 export default function App() {
   return (
-    <div className="min-h-screen">
+    <div className="app-shell">
       <NavBar />
-      <div className="mx-auto w-full max-w-3xl px-4 py-6">
+      <div className="container-page">
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -37,14 +36,6 @@ export default function App() {
             element={
               <RequireAuth>
                 <ProfilePage />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/search"
-            element={
-              <RequireAuth>
-                <SearchPage />
               </RequireAuth>
             }
           />

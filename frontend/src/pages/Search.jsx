@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { api } from '../lib/api'
+import IconButton from '../components/IconButton'
+import { IconSearch } from '../components/Icons'
 
 export default function SearchPage() {
   const [q, setQ] = useState('')
@@ -39,7 +41,9 @@ export default function SearchPage() {
             <option value="users">Users</option>
             <option value="posts">Posts</option>
           </select>
-          <button className="rounded-md bg-slate-900 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800">Search</button>
+          <IconButton as="button" type="submit" label="Search" className="bg-slate-900 text-white hover:bg-slate-800">
+            <IconSearch className="h-5 w-5" />
+          </IconButton>
         </form>
         {loading ? <div className="mt-3 text-sm text-slate-600">Searching...</div> : null}
         {error ? <div className="mt-3 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div> : null}

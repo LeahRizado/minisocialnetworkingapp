@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { api } from '../lib/api'
 import PostCard from '../components/PostCard'
+import IconButton from '../components/IconButton'
+import { IconSend } from '../components/Icons'
 
 export default function FeedPage() {
   const [data, setData] = useState({ posts: [], comments: {} })
@@ -32,8 +34,9 @@ export default function FeedPage() {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-lg border bg-white p-4">
-        <h1 className="text-lg font-bold text-slate-900">Newsfeed</h1>
+      <div className="card">
+        <div className="card-body">
+          <h1 className="text-lg font-bold text-slate-900">Newsfeed</h1>
         <form
           className="mt-3 space-y-2"
           onSubmit={async (e) => {
@@ -60,7 +63,7 @@ export default function FeedPage() {
           }}
         >
           <textarea
-            className="w-full rounded-md border px-3 py-2 text-sm"
+            className="textarea"
             placeholder="What's on your mind?"
             rows={3}
             value={content}
@@ -73,17 +76,21 @@ export default function FeedPage() {
               onChange={(e) => setImage(e.target.files?.[0] || null)}
               className="text-sm"
             />
-            <button
-              className="rounded-md bg-slate-900 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+            <IconButton
+              as="button"
+              type="submit"
+              label="Create post"
+              className="btn btn-primary"
               disabled={busy}
             >
-              Post
-            </button>
+              <IconSend className="h-5 w-5" />
+            </IconButton>
           </div>
         </form>
+        </div>
       </div>
 
-      {error ? <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div> : null}
+      {error ? <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div> : null}
       {loading ? <div className="text-sm text-slate-600">Loading...</div> : null}
 
       <div className="space-y-4">
