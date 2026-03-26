@@ -99,11 +99,13 @@ export default function PostCard({ post, comments = [], onChanged }) {
         )}
 
         {post.image ? (
-          <img
-            alt="post"
-            src={`http://localhost/minisocialnetworkingapp/backend/public${post.image}`}
-            className="mt-3 w-full rounded-lg border border-slate-200 object-cover"
-          />
+          <div className="mt-3 flex justify-center">
+            <img
+              alt="post"
+              src={`http://localhost/minisocialnetworkingapp/backend/public${post.image}`}
+              className="max-h-[500px] w-auto max-w-full rounded-lg border border-slate-200 object-contain"
+            />
+          </div>
         ) : null}
 
         <div className="mt-4 flex items-center gap-3">
